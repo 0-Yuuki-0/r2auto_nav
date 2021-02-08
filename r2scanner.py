@@ -31,15 +31,15 @@ class Scanner(Node):
         self.subscription  # prevent unused variable warning
 
     def listener_callback(self, msg):
-        # create numpy array
-        laser_range = np.array(msg.ranges)
-        # replace 0's with nan
-        laser_range[laser_range==0] = np.nan
-        # find index with minimum value
-        lr2i = np.nanargmin(laser_range)
+        # # create numpy array
+        # laser_range = np.array(msg.ranges)
+        # # replace 0's with nan
+        # laser_range[laser_range == 0] = np.nan
+        # # find index with minimum value
+        # lr2i = laser_range[laser_range == 1]
 
         # log the info
-        self.get_logger().info('Shortest distance at %i degrees' % lr2i)
+        self.get_logger().info('%f' % msg.ranges[0])
 
 
 def main(args=None):
